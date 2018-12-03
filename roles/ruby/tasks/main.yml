@@ -1,0 +1,25 @@
+---
+# Ruby / Rails setup
+
+- name: Check if rbenv is installed
+  stat:
+    path: ~/.rbenv
+  register: rbenv_path
+
+- name: Pull rbenv
+  git:
+    repo: https://github.com/rbenv/rbenv
+    dest: ~/.rbenv
+    clone: yes
+  when: rbenv_path.stat.isdir is not defined
+
+- name: Create plugins directory
+  file:
+    path: ~/.rbenv/plugins
+  when: rbenv_path.isdir is defined
+
+- name: Pull ruby-build
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: ~/.rbenv/plugins/ruby-build
+
