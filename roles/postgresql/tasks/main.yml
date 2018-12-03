@@ -1,0 +1,39 @@
+---
+# configure and install postgresql
+
+- name: Install postgres11 rpm from source
+  dnf:
+    name: "https://download.postgresql.org/pub/repos/yum/11/fedora/fedora-29-x86_64/pgdg-fedora11-11-2.noarch.rpm"
+    state: present
+
+- name: Install postgresql11 server & client
+  dnf:
+    name:
+      - postgresql11
+      - postgresql11-server
+    state: present
+
+- name: Initialize postgres database
+  become: true
+  shell: /usr/pgsql-11/bin/postgresql-11-setup initdb
+  ignore_errors: yes
+
+- name: postgresql.conf template
+  become_user: postgres
+  template:
+    src: postgresql.conf.j2
+    dest: "{{ postgres_path }}/postgresql.conf"
+
+- name: pg_hba.conf template
+  become_user: postgres
+  template:
+    src: pg_hba.conf.j2
+    dest: "{{ postgres_path }}/pg_hba.conf"
+
+- name: Start and enable postgresql database
+  become: true
+  systemd:
+    name: postgresql-11
+    state: started
+    enabled: yes
+

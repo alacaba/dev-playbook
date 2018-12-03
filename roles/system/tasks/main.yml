@@ -35,5 +35,9 @@
       - sqlite-devel
       - python-pip
       - python3-pip
+      - stow
+      - fish
+      - rxvt-unicode
+      - tmux
+      - libselinux-python
     state: present
-
