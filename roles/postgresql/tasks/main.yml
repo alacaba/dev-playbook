@@ -11,6 +11,7 @@
     name:
       - postgresql11
       - postgresql11-server
+      - postgresql11-devel
     state: present
 
 - name: Initialize postgres database
