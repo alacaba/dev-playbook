@@ -1,0 +1,20 @@
+---
+# rust setup
+
+- name: check rustup installation
+  stat:
+    path: ~/.cargo/bin/rustup
+  register: rustup_installed
+
+- name: Rustup
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
+  when: not rustup_installed.exists
+
+- name: Rustup nightly
+  shell: ~/.cargo/bin/rustup toolchain add nightly
+
+- name: Rustup rust-src
+  shell: ~/.cargo/bin/rustup component add rust-src
+
+- name: Install racer
+  shell: ~/.cargo/bin/cargo +nightly install racer

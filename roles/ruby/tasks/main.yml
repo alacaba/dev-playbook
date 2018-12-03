@@ -6,6 +6,11 @@
     path: ~/.rbenv
   register: rbenv_path
 
+- name: Check if ruby is installed
+  stat:
+    path: ~/.rbenv/shims/ruby
+  register: ruby_installed
+
 - name: Pull rbenv
   git:
     repo: https://github.com/rbenv/rbenv
@@ -23,3 +28,14 @@
     repo: https://github.com/rbenv/ruby-build.git
     dest: ~/.rbenv/plugins/ruby-build
 
+- name: Install ruby
+  shell: "~/.rbenv/bin/rbenv install {{ ruby_version }}"
+  when: not ruby_installed.stat.exists
+
+- name: Install bundler
+  shell: "~/.rbenv/bin/rbenv global {{ ruby_version }}; ~/.rbenv/shims/gem install bundler"
+  when: not ruby_installed.stat.exists
+
+- name: Install rails
+  shell: "~/.rbenv/bin/rbenv global {{ ruby_version }}; ~/.rbenv/shims/gem install rails"
+  when: ruby_installed.stat.exists
