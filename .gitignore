@@ -1,3 +1,4 @@
 Vagrantfile
 *.pyc
 .vagrant
+*.retry
