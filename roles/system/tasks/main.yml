@@ -11,35 +11,36 @@
     packages:
   dnf:
     name:
-      - cmake
-      - gcc-c++
-      - make
-      - python3-devel
-      - git-core
-      - zlib
-      - zlib-devel
-      - gcc-c++
-      - patch
-      - readline
-      - readline-devel
-      - libyaml-devel
-      - libffi-devel
-      - openssl-devel
-      - make
-      - bzip2
       - autoconf
       - automake
-      - libtool
       - bison
+      - bzip2
+      - cmake
       - curl
-      - sqlite-devel
-      - python-pip
-      - python3-pip
-      - stow
       - fish
-      - rxvt-unicode
-      - tmux
+      - gcc-c++
+      - gcc-c++
+      - git-core
+      - libffi-devel
       - libselinux-python
-      - vim
+      - libtool
+      - libyaml-devel
+      - make
+      - make
+      - openssl-devel
+      - patch
+      - python-pip
+      - python3-devel
+      - python3-pip
+      - readline
+      - readline-devel
+      - rxvt-unicode
+      - sqlite-devel
+      - stow
+      - tmux
       - util-linux-user
+      - vim
+      - xclip
+      - zlib
+      - zlib-devel
     state: present
