@@ -22,11 +22,11 @@
   shell: /usr/bin/fish -c "fisher"
   ignore_errors: yes
 
-- name: Configure YCM
-  shell: cd ~/.vim/plugged/YouCompleteMe && /usr/bin/fish -c "/usr/bin/python3 install.py --ts-completer --rust-completer --clang-completer"
-
 - name: Install virtualfish
   shell: pip install virtualfish --user
+
+- name: Configure YCM
+  shell: cd ~/.vim/plugged/YouCompleteMe && /usr/bin/fish -c "npm; /usr/bin/python3 install.py --ts-completer --rust-completer --clang-completer"
 
 - name: change default shell
   become: true
