@@ -8,7 +8,7 @@
 
 - name: Rustup
   shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
-  when: not rustup_installed.exists
+  when: not rustup_installed.stat.exists
 
 - name: Rustup nightly
   shell: ~/.cargo/bin/rustup toolchain add nightly
