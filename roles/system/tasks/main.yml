@@ -1,6 +1,17 @@
 ---
 # installs dev dependencies
 
+- name: RPM fusion repositories
+  dnf:
+    name:
+      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-29.noarch.rpm
+      - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-29.noarch.rpm
+      - https://negativo17.org/repos/fedora-spotify.repo
+      - http://mirror.yandex.ru/fedora/russianfedora/russianfedora/nonfree/fedora/releases/29/Everything/x86_64/os/russianfedora-nonfree-release-29-1.noarch.rpm
+      - http://mirror.yandex.ru/fedora/russianfedora/russianfedora/free/fedora/releases/29/Everything/x86_64/os/russianfedora-free-release-29-1.noarch.rpm
+      - https://go.skype.com/skypeforlinux-64.rpm
+    state: present
+
 - name: Update system
   dnf:
     name: "*"
@@ -40,6 +51,7 @@
       - tmux
       - util-linux-user
       - vim
+      - tig
       - xclip
       - zlib
       - zlib-devel
