@@ -7,3 +7,10 @@
     - system
     - postgresql
 
+- hosts: all
+  roles:
+    - ruby
+    - rust
+    - node
+    - vim
+    - urxvt
