@@ -40,4 +40,6 @@
       - rxvt-unicode
       - tmux
       - libselinux-python
+      - vim
+      - util-linux-user
     state: present

@@ -1,7 +1,6 @@
 ---
 # vim, tmux, fish setup
 
-
 - name: Install fisherman
   shell: curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
@@ -26,3 +25,9 @@
 - name: Configure YCM
   shell: cd ~/.vim/plugged/YouCompleteMe && /usr/bin/fish -c "/usr/bin/python3 install.py --ts-completer --rust-completer --clang-completer"
 
+- name: Install virtualfish
+  shell: pip install virtualfish --user
+
+- name: change default shell
+  become: true
+  shell: "usermod -s /usr/bin/fish {{ user }}"
