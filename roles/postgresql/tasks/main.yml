@@ -2,11 +2,13 @@
 # configure and install postgresql
 
 - name: Install postgres11 rpm from source
+  become: true
   dnf:
     name: "https://download.postgresql.org/pub/repos/yum/11/fedora/fedora-29-x86_64/pgdg-fedora11-11-2.noarch.rpm"
     state: present
 
 - name: Install postgresql11 server & client
+  become: true
   dnf:
     name:
       - postgresql11

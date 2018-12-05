@@ -1,14 +1,10 @@
 ---
 # This playbook install and configures my development environment
 
-- hosts: all
-  become: true
+- hosts: local
   roles:
     - system
     - postgresql
-
-- hosts: all
-  roles:
     - ruby
     - rust
     - node

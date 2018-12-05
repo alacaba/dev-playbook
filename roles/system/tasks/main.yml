@@ -13,11 +13,13 @@
     state: present
 
 - name: Update system
+  become: true
   dnf:
     name: "*"
     state: latest
 
 - name: Install dependencies
+  become: true
   vars:
     packages:
   dnf:
